@@ -28,7 +28,7 @@ Before using the API, you need to populate the database with some players. You c
     docker-compose exec server python manage.py populate_players
    ```
 ### Accessing the API
-Once you have configured and populated the database, you can access the API via Swagger at the following URL: [Open swagger](http://localhost:8000/swagger)
+Once you have configured and populated the database, you can access the API via Swagger at the following URL: [Open swagger](http://localhost:8000/api/v1/swagger/)
 
 
 ### Accessing Web App
