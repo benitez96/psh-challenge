@@ -2,7 +2,7 @@ from django.db import models
 
 class Player(models.Model):
     nickname = models.CharField(max_length=255, unique=False, null=True, blank=True)
-    avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)
+    avatar = models.CharField(blank=True, null=True, max_length=500)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
