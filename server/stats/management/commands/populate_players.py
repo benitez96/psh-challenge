@@ -1,4 +1,6 @@
 from django.core.management.base import BaseCommand
+from django_celery_beat.models import IntervalSchedule, PeriodicTask
+from stats.tasks import insert_scores
 import requests
 
 from stats.models import Player
@@ -20,3 +22,17 @@ class Command(BaseCommand):
 
         Player.objects.bulk_create(players)
         self.stdout.write(self.style.SUCCESS('Successfully added %s players' % len(players)))
+
+
+        insert_scores.delay()
+
+        day_schedule, created = IntervalSchedule.objects.get_or_create(
+            period=IntervalSchedule.MINUTES,
+            every=5
+        )
+
+        PeriodicTask.objects.get_or_create(
+            name="Periodic task for insert scores",
+            interval=day_schedule,
+            task="stats.tasks.insert_scores"
+        )

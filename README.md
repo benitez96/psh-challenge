@@ -20,13 +20,8 @@ Before running the application for the first time, make sure to follow these ste
    ```shell
     docker-compose up -d
    ```
-4. Apply database migrations:
 
-   ```shell
-    docker-compose exec server python manage.py migrate
-   ```
-
-5.  Populating the Database
+4.  Populating the Database
 Before using the API, you need to populate the database with some players. You can do this by running the following command:
 
    ```shell
